@@ -1,0 +1,29 @@
+@import "../../../theme/variables.scss";
+
+
+.content, .menu {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.menu {
+    display: flex;
+    margin-bottom: 50px;
+
+    .left, .right {
+        width: 50%;
+    }
+
+    .right {
+        text-align: right;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}
+
+ion-segment {
+    --color: white;
+    margin-bottom: 30px;
+}

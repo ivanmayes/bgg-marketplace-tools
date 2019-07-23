@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Pull Info from Marketplace</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="inputForm" (ngSubmit)="submit()">
+    <ion-item>
+      <ion-label position="stacked">User ID:</ion-label>
+      <ion-input formControlName="userId" required></ion-input>
+    </ion-item>
+
+    <div
+      class="errors"
+      padding
+      *ngIf="userId.invalid && (userId.dirty || userId.touched)"
+    >
+      <div *ngIf="userId.hasError('required')">
+        User Id is required.
+      </div>
+    </div>
+
+    <ion-button type="submit" [disabled]="!inputForm.valid">Pull Info from BGG</ion-button>
+  </form>
+
+</ion-content>

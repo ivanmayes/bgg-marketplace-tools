@@ -1,0 +1,34 @@
+<ion-content padding>
+
+    <ng-container *ngIf="state$ | async as state">
+
+        <div class="menu">
+            <div class="left">
+                <h1>BGG Marketplace Tools</h1>
+            </div>
+            <div class="right">
+                <ion-button size="small" (click)="openScrapeModal()">Refresh BGG Products</ion-button>
+                <ion-button size="small" (click)="openImportPricesModal()">Import Prices</ion-button>
+            </div>
+
+        </div>
+
+        <div class="content">
+
+            <ion-segment (ionChange)="segmentChanged($event)" value="user">
+                <ion-segment-button value="user">
+                    <ion-label>Grouped by User</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="lowest">
+                    <ion-label>Lowest Prices</ion-label>
+                </ion-segment-button>
+            </ion-segment>
+
+            <app-products-by-user *ngIf="segmentState === 'user'"></app-products-by-user>
+            <app-products-by-lowest *ngIf="segmentState === 'lowest'"></app-products-by-lowest>
+        </div>
+
+
+    </ng-container>
+
+</ion-content>

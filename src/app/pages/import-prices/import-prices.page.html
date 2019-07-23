@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>import-prices</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <input
+      id="myFile"
+      type="file"
+      name="file"
+      (change)="addFile($event.target.files)"
+    />
+</ion-content>

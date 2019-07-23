@@ -1,0 +1,31 @@
+<ng-container *ngIf="userProductGroups$ | async as userProductGroups">
+
+    <ion-item>
+      <ion-label position="stacked">Minimum # of items per user</ion-label>
+      <ion-range (ionChange)="setRange($event)" dualKnobs="true" pin="true" min="1" max="{{maximumItems}}" [value]="itemRange" step="1" snaps="true" color="primary"></ion-range>
+    </ion-item>
+
+    <ng-container *ngFor="let userProductGroup of userProductGroups">
+        <div class="userGroup" *ngIf="userProductGroup.products.length > itemRange.lower && userProductGroup.products.length < itemRange.upper">
+          <h2>
+            <a [href]="'https://boardgamegeek.com/geekmarket/user/' + userProductGroup.user.username">
+              {{ userProductGroup.user.username }} ({{ userProductGroup.products.length }})
+            </a>
+          </h2>
+
+          <div class="product header">
+            <p class="name">Name:</p>
+            <p class="price">Price:</p>
+            <p class="lowestPrice">Lowest Price:</p>
+            <p class="msrp">MSRP:</p>
+          </div>
+          <a class="product" [href]="'https://boardgamegeek.com/geekmarket/product/' + product.productid" *ngFor="let product of userProductGroup.products" [class.deal]="product.price < product.prices.lowestPrice">
+            <p class="name">{{ product.objectlink.name }}</p>
+            <p>{{ product.price | currency }}</p>
+            <p *ngIf="product.prices">{{ product.prices.lowestPrice | currency }}</p>
+            <p *ngIf="product.prices">{{ product.prices.msrp | currency }}</p>
+          </a>
+        </div>
+    </ng-container>
+
+</ng-container>

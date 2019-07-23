@@ -1,0 +1,96 @@
+@import "./variables.scss";
+
+ion-content[padding] {
+    --padding-start: 10%;
+    --padding-end: 10%;
+    --padding-top: 10%;
+    --padding-bottom: 10%;
+
+    @media (min-width: $desktop-breakpoint) {
+        --padding-start: 30px;
+        --padding-end: 30px;
+        --padding-top: 30px;
+        --padding-bottom: 30px;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+
+// ion-button {
+//     text-transform: uppercase;
+//     font-weight: bold;
+//     font-size: 1.6rem;
+//     height: 50px;
+//     --border-radius: 0;
+//     --padding-start: 35px;
+//     --padding-end: 35px;
+
+//     &.button-disabled {
+//         opacity: 0.4;
+//     }
+// }
+
+
+.fullscreen {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.userGroup {
+    margin-bottom: 30px;
+}
+
+.product {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    border-bottom: 1px solid black;
+    padding: 5px 8px;
+
+    p {
+        width: 25%;
+        margin: 0;
+    }
+
+    .name {
+        text-align: left;
+    }
+
+    &.deal {
+        background: #365836;
+    }
+
+    &:hover {
+        text-decoration: none;
+        background: var(--ion-color-primary);
+    }
+}
+
+.header {
+    font-weight: bold;
+
+    &:hover {
+        background: none;
+    }
+}
+
+a {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

@@ -1,0 +1,23 @@
+<ng-container *ngIf="lowestProducts$ | async as lowestProducts">
+
+    <ion-item>
+      <ion-label position="stacked">Minimum dollar amount</ion-label>
+      <ion-range (ionChange)="setRange($event)" pin="true" min="1" max="50" value="5" step="1" snaps="true" color="primary"></ion-range>
+    </ion-item>
+
+    <div class="product header">
+      <p class="name">Name:</p>
+      <p class="price">Price:</p>
+      <p class="lowestPrice">Lowest Price:</p>
+      <p class="msrp">MSRP:</p>
+    </div>
+    <ng-container *ngFor="let product of lowestProducts">
+      <a class="product" [href]="'https://boardgamegeek.com/geekmarket/product/' + product.productid" [class.deal]="product.price < product.prices.lowestPrice">
+        <p class="name">{{ product.objectlink.name }}</p>
+        <p>{{ product.price | currency }}</p>
+        <p *ngIf="product.prices">{{ product.prices.lowestPrice | currency }}</p>
+        <p *ngIf="product.prices">{{ product.prices.msrp | currency }}</p>
+      </a>
+    </ng-container>
+
+</ng-container>

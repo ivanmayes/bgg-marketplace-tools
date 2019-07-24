@@ -12,11 +12,13 @@
       <p class="msrp">MSRP:</p>
     </div>
     <ng-container *ngFor="let product of lowestProducts">
-      <a class="product" [href]="'https://boardgamegeek.com/geekmarket/product/' + product.productid" [class.deal]="product.price < product.prices.lowestPrice">
+      <a class="product"
+      [href]="'https://boardgamegeek.com/geekmarket/product/' + product.productid"
+      [class.deal]="product.prices && product.price < product.prices.lowestPrice">
         <p class="name">{{ product.objectlink.name }}</p>
         <p>{{ product.price | currency }}</p>
-        <p *ngIf="product.prices">{{ product.prices.lowestPrice | currency }}</p>
-        <p *ngIf="product.prices">{{ product.prices.msrp | currency }}</p>
+        <p><span *ngIf="product.prices">{{ product.prices.lowestPrice | currency }}</span></p>
+        <p><span *ngIf="product.prices">{{ product.prices.msrp | currency }}</span></p>
       </a>
     </ng-container>
 
